@@ -22,13 +22,16 @@ package 'pkg-config'
 package 'libffi-dev'
 package 'nodejs'
 
+username = 'vagrant'
+
 bash 'rvm' do
+    su = "sudo su -l #{username} -c "
     code <<-EOH
-    command curl -sSL https://rvm.io/mpapis.asc | gpg --import -
-    /usr/bin/curl -sSL https://get.rvm.io | bash -s master
-    source ~/.bash_profile
-    rvm install 2.2
-    rvm @global
-    gem install bundler
+    #{su} "command curl -sSL https://rvm.io/mpapis.asc | gpg --import -"
+    #{su} "/usr/bin/curl -sSL https://get.rvm.io | bash -s master"
+    #{su} "source ~/.bash_profile"
+    #{su} "rvm install 2.2"
+    #{su} "rvm @global"
+    #{su} "gem install bundler"
     EOH
 end
