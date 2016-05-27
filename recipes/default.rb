@@ -41,6 +41,6 @@ end
 
 bash 'db-dev' do
   code <<-EOH
-    #{su} "su -l postgres -c 'psql -d template1 -c \"create user vagrant superuser\"'"
+    #{su} "su -l postgres -c \"psql -d template1 -c 'create user vagrant superuser'\""
   EOH
 end
