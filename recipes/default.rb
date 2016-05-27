@@ -24,20 +24,14 @@ package 'nodejs'
 
 username = 'vagrant'
 
-include_recipe 'rvm::system_install
-
-rvm_default_ruby "2.2"
-
-global_gems "bundler"
-
-# bash 'rvm' do
-#     su = "sudo su -l #{username} -c "
-#     code <<-EOH
-#     #{su} "command curl -sSL https://rvm.io/mpapis.asc | gpg --import -"
-#     #{su} "/usr/bin/curl -sSL https://get.rvm.io | bash -s master"
-#     #{su} "source ~/.bash_profile"
-#     #{su} "rvm install 2.2"
-#     #{su} "rvm @global"
-#     #{su} "gem install bundler"
-#     EOH
-# end
+bash 'rvm' do
+    su = "sudo su -l #{username} -c "
+    code <<-EOH
+    #{su} "command curl -sSL https://rvm.io/mpapis.asc | gpg --import -"
+    #{su} "/usr/bin/curl -sSL https://get.rvm.io | bash -s master"
+    #{su} "source ~/.bash_profile"
+    #{su} "rvm install 2.2"
+    #{su} "rvm @global"
+    #{su} "gem install bundler"
+    EOH
+end
