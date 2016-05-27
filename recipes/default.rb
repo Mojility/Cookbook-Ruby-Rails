@@ -33,5 +33,6 @@ bash 'rvm' do
     #{su} "rvm install 2.2"
     #{su} "rvm @global"
     #{su} "gem install bundler"
+    #{su} "rvm --default --create 2.2@rails"
     EOH
 end
