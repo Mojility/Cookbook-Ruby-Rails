@@ -28,6 +28,8 @@ include_recipe 'rvm::system_install
 
 rvm_default_ruby "2.2"
 
+global_gems "bundler"
+
 # bash 'rvm' do
 #     su = "sudo su -l #{username} -c "
 #     code <<-EOH
