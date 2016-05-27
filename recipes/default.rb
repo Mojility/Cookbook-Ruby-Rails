@@ -21,11 +21,13 @@ package 'bison'
 package 'pkg-config'
 package 'libffi-dev'
 package 'nodejs'
+package 'postgresql'
+package 'libpq-dev'
 
 username = 'vagrant'
+su = "sudo su -l #{username} -c "
 
 bash 'rvm' do
-    su = "sudo su -l #{username} -c "
     code <<-EOH
     #{su} "command curl -sSL https://rvm.io/mpapis.asc | gpg --import -"
     #{su} "/usr/bin/curl -sSL https://get.rvm.io | bash -s master"
@@ -35,4 +37,10 @@ bash 'rvm' do
     #{su} "gem install bundler"
     #{su} "rvm --default --create 2.2@rails"
     EOH
+end
+
+bash 'db-dev' do
+  code <<-EOH
+    #{su} "su -l postgres -c 'psql -d template1 -c \"create user vagrant superuser\"'"
+  EOH
 end
