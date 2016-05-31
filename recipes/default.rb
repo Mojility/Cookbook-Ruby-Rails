@@ -33,9 +33,9 @@ bash 'rvm' do
     #{su} "/usr/bin/curl -sSL https://get.rvm.io | bash -s master"
     #{su} "source ~/.bash_profile"
     #{su} "rvm install 2.2"
-    #{su} "rvm @global"
+    #{su} "rvm 2.2@global"
     #{su} "gem install bundler"
-    #{su} "rvm --default --create 2.2@rails"
+    #{su} "rvm --default 2.2"
     EOH
 end
 
